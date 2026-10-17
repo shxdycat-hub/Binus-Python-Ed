@@ -1,0 +1,11 @@
+print("Odd or Even Checker")
+
+user_input = int(input("Enter any integer: "))
+    
+remainder = user_input % 2
+    
+match remainder:
+  case 0:
+    print(f"The number {user_input} is Even.")
+  case 1:
+    print(f"The number {user_input} is Odd.")

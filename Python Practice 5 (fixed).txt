@@ -1,0 +1,42 @@
+import math
+
+print("Quadratic Equation Solver")
+VA = float(input("Value A: "))  
+VB = float(input("Value B: "))
+VC = float(input("Value C: "))
+
+if VA == 0:
+    print("A cannot be Zero")
+    exit()
+
+sign_VB = "+" if VB >= 0 else "-"
+sign_VC = "+" if VC >= 0 else "-"
+equation_str = f"{VA}x² {sign_VB} {abs(VB)}x {sign_VC} {abs(VC)} = 0"
+
+discriminant = (VB ** 2) - (4 * VA * VC)
+
+if discriminant > 0:
+    x1 = (-VB + math.sqrt(discriminant)) / (2 * VA)
+    x2 = (-VB - math.sqrt(discriminant)) / (2 * VA)
+        
+    print("It has distinct roots")
+    print(f"Quadratic Equation: {equation_str}")
+    print(f"Discriminant Value: {discriminant}")
+    print(f"Root x1: {x1}")
+    print(f"Root x2: {x2}")
+
+elif discriminant == 0:
+    x = -VB / (2 * VA)
+        
+    print("It has a double root")
+    print(f"Quadratic Equation: {equation_str}")
+    print(f"Discriminant Value: {discriminant}")
+    print(f"Root value: {x}")
+
+else:
+    print("It has imaginary roots")
+    print(f"Quadratic Equation: {equation_str}")
+    print(f"Discriminant Value: {discriminant}")
+    print("Formulas for roots x1 and x2:")
+    print(f"  x1 = (-({VB}) + √({discriminant})) / (2 * {VA})")
+    print(f"  x2 = (-({VB}) - √({discriminant})) / (2 * {VA})")

@@ -1,0 +1,18 @@
+repeat = "Y"
+
+while repeat == "Y" or repeat == "y":
+
+    num = int(input("Enter any number: "))
+    
+
+    if num % 2 == 0:
+        print(f"The number {num} is even")
+    else:
+        print(f"The number {num} is odd")
+        
+
+    repeat = input("Again? ")
+    print() 
+
+print("Program Stops")
+print("Cya")

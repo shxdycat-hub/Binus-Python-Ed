@@ -1,0 +1,66 @@
+total_points = 0.0
+grade_count = 0
+active = True
+
+while active:
+    grade = input("Enter Grade Category (Press Enter to Stop): ").strip().upper()
+    
+    if grade == "":
+        active = False
+    else:
+       
+        if grade == "A":
+            points = 4.00
+        elif grade == "A-":
+            points = 3.75
+        elif grade == "B+":
+            points = 3.50
+        elif grade == "B":
+            points = 3.00
+        elif grade == "B-":
+            points = 2.75
+        elif grade == "C+":
+            points = 2.50
+        elif grade == "C":
+            points = 2.00
+        elif grade == "C-":
+            points = 1.75
+        elif grade == "D":
+            points = 1.50
+        elif grade == "E":
+            points = 1.20
+        else:
+            print("Invalid Grade Category! Do it right yo.")
+            points = -1  
+            
+        if points != -1:
+            total_points = total_points + points
+            grade_count = grade_count + 1
+
+if grade_count > 0:
+    average = total_points / grade_count
+    
+    if average >= 3.875:
+        designation = "A"
+    elif average >= 3.625:
+        designation = "A-"
+    elif average >= 3.25:
+        designation = "B+"
+    elif average >= 2.875:
+        designation = "B"
+    elif average >= 2.625:
+        designation = "B-"
+    elif average >= 2.25:
+        designation = "C+"
+    elif average >= 1.875:
+        designation = "C"
+    elif average >= 1.625:
+        designation = "C-"
+    elif average >= 1.35:
+        designation = "D"
+    else:
+        designation = "E"
+        
+    print(f"The average grade is {average:.2f} with a designation of {designation}")
+else:
+    print("No grades were entered.")

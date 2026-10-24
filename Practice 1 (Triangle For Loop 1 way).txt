@@ -1,0 +1,5 @@
+v1 = int(input("Input Max Value: "))
+
+for i in range(v1, 0, -1):
+
+    print(str(i) * i)

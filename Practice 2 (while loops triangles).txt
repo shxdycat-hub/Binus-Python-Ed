@@ -1,0 +1,23 @@
+repeat = "Y"
+
+while repeat == "Y" or repeat == "y":
+
+    side_a = float(input("Enter Side A: "))
+    side_b = float(input("Enter Side B: "))
+    side_c = float(input("Enter Side C: "))
+    print() 
+
+    if side_a == side_b and side_b == side_c:
+        print("It is most indubitably, certainly an Equilateral Triangle")
+    elif side_a == side_b or side_b == side_c or side_a == side_c:
+        print("Its an Isosceles Triangle")
+    else:
+        print("Tis' a Scalene Triangle")
+        
+    print()
+    
+    repeat = input("Go again? ")
+    print() 
+
+print("Program Stops")
+print("Sick")

@@ -1,0 +1,67 @@
+def ma_name():
+    print("-----------")
+    print("|Edgar|BSD|")
+    print("-----------")
+
+def add_numbas(a, b):
+    return a + b
+
+def subtract_numbas(a, b):
+    return a - b
+
+def multiply_numbas(a, b):
+    return a * b
+
+def divide_numbas(a, b):
+    if b == 0:
+        return None
+    return a / b
+
+def modulus_numbas(a, b):
+    if b == 0:
+        return None
+    return a % b
+
+def math_maxxing_dynamic():
+    ma_name()
+    math_maxxing_selecto_gizmo = {
+        "+": "addition",
+        "-": "subtraction",
+        "*": "multiplication",
+        "/": "division",
+        "%": "modulus"
+    }
+    
+    while True:
+        menu = input("what operation yo (+|-|/|*|%|stop): ")
+        if menu == "stop":
+            print("aight then bounce off m8")
+            break
+            
+        if menu not in math_maxxing_selecto_gizmo:
+            print("man you can't do that")
+            continue
+            
+        n1 = int(input("yo main numba: "))
+        n2 = int(input("yo side numba: "))
+            
+        if (menu == "/" or menu == "%") and n2 == 0:
+            print(f"the operation {math_maxxing_selecto_gizmo[menu]} {n1} {menu} {n2} is undefined (i cant divide this yo)")
+        else:
+            if menu == "+":
+                result_value = add_numbas(n1, n2)
+            elif menu == "-":
+                result_value = subtract_numbas(n1, n2)
+            elif menu == "*":
+                result_value = multiply_numbas(n1, n2)
+            elif menu == "/":
+                result_value = divide_numbas(n1, n2)
+            elif menu == "%":
+                result_value = modulus_numbas(n1, n2)
+
+            if isinstance(result_value, float) and result_value.is_integer():
+                result_value = int(result_value)
+            print(f"and yo numba for {math_maxxing_selecto_gizmo[menu]} {n1} {menu} {n2} is {result_value}")
+
+if __name__ == "__main__":
+    math_maxxing_dynamic()

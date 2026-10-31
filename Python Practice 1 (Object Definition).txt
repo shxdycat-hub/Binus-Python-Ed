@@ -1,0 +1,57 @@
+def ma_name():
+    print("-----------")
+    print("|Edgar|BSD|")
+    print("-----------")
+
+def math_maxxing_normal(a=10, b=3):
+    results = {
+        "+": a + b,
+        "-": a - b,
+        "*": a * b,
+        "/": None,
+        "%": None
+    }
+    
+    if b != 0:
+        results["/"] = a / b
+        results["%"] = a % b
+
+    return results
+
+def math_maxxing_dynamic():
+    ma_name()
+
+    math_maxxing_selecto_gizmo = {
+        "+": "addition",
+        "-": "subtraction",
+        "*": "multiplication",
+        "/": "division",
+        "%": "modulus"
+    }
+    
+    while True:
+        menu = input("what operation yo (+|-|/|*|%|stop): ").strip().lower()
+        if menu == "stop":
+            print("aight then bounce off m8")
+            break
+        if menu not in math_maxxing_selecto_gizmo:
+            print("man you can't do that")
+            continue
+
+        n1 = int(input("yo main numba: "))
+        n2 = int(input("yo side numba: "))
+
+        outputs = math_maxxing_normal(n1, n2)
+
+        if (menu == "/" or menu == "%") and n2 == 0:
+            print(f"the operation{math_maxxing_selecto_gizmo[menu]} {n1} {menu} {n2} is undefined (i cant divide this yo)")
+        else:
+            result_value = outputs[menu]
+
+            if isinstance(result_value, float) and result_value.is_integer():
+                result_value = int(result_value)
+                
+            print(f"and yo numba for {math_maxxing_selecto_gizmo[menu]} {n1} {menu} {n2} is {result_value}")
+
+if __name__ == "__main__":
+    math_maxxing_dynamic()

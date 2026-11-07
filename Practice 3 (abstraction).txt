@@ -1,0 +1,36 @@
+class PaymentMethod:
+    def pay(self, amount):
+        print("Error yo wtf did you do")
+        return False
+
+class CreditCard(PaymentMethod):
+    def pay(self, amount):
+        print("Paid $%.2f using Credit Card." % amount)
+        return True
+
+class EBanking(PaymentMethod):
+    def pay(self, amount):
+        print("Paid $%.2f using E-Banking." % amount)
+        return True 
+
+class BrokenPayment(PaymentMethod):
+    pass 
+
+if __name__ == "__main__":
+    cc_payment = CreditCard()
+    ebank_payment = EBanking()
+    broken_payment = BrokenPayment()
+
+    payment_methods_list = [cc_payment, ebank_payment, broken_payment]
+    transaction_amount = 50.00
+    
+    print("Proccessin yo money:\n")
+    
+    for i in range(len(payment_methods_list)):
+        current_method = payment_methods_list[i]
+        
+        is_successful = current_method.pay(transaction_amount)
+        
+        if is_successful == False:
+            print("Process halted at list index %d due to unconfigured class." % i)
+            brea

@@ -1,0 +1,69 @@
+class KrustyKrabVault:
+    def __init__(self):
+        self.secret_formula_item = ""
+        self.ingredient_value = ""
+
+    def set_secret_formula_item(self, new_item):
+        if new_item == "":
+            print("naw man that aint no formula item")
+            return False
+        self.secret_formula_item = new_item
+        return True
+
+    def set_ingredient_value(self, new_value):
+        if new_value == "":
+            print("put in a real formula value dammit this shi cost money to run")
+            return False
+        self.ingredient_value = new_value
+        return True
+
+    def get_secret_formula_item(self):
+        return self.secret_formula_item
+
+    def get_ingredient_value(self):
+        return self.ingredient_value
+
+if __name__ == "__main__":
+    spatula = KrustyKrabVault()
+    
+    print("=== Krusty Krab Vault (NO CHUM BUCKETERS ALLOWED) ===")
+    
+    while True:
+        print("\n--- Protect the Secret Formula ---")
+        input_item = input("the item yo: ")
+        input_value = input("ingredients?: ")
+        
+        formula_success = spatula.set_secret_formula_item(input_item)
+        ingredient_success = spatula.set_ingredient_value(input_value)
+        
+        if formula_success == True and ingredient_success == True:
+            print("dang nabbit")
+            break 
+        else:
+            print("man you gotta do it again man")
+
+    while True:
+        print("\n=== CURRENT VAULT INVENTORY ===")
+        print("Formula Item     : %s" % spatula.get_secret_formula_item())
+        print("Secret Ingredient: %s" % spatula.get_ingredient_value())
+        print("================================")
+        print("1. tell squiddyboi for them names man")
+        print("2. get spongeboiby bob to get sum ingredients")
+        print("3. get out and go home yo")
+        
+        choice = input("special menu items yo (1-3): ")
+        
+        if choice == "1":
+            new_item = input("new name yo what is it bossman: ")
+            spatula.set_secret_formula_item(new_item)
+            
+        elif choice == "2":
+            new_value = input("give me the new ingredient but please dont put ketchup: ")
+            spatula.set_ingredient_value(new_value)
+            
+        elif choice == "3":
+            print("byebye and make sure plankton bumahh dont get in here aight type shi type shi!")
+            break  
+            
+        else:
+            print("bumahh mr krabs, pick 1, 2, or 3.")

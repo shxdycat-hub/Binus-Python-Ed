@@ -1,7 +1,9 @@
-class PaymentMethod:
+from abc import ABC, abstractmethod
+
+class PaymentMethod(ABC):
+    @abstractmethod
     def pay(self, amount):
-        print("Error yo wtf did you do")
-        return False
+        pass
 
 class CreditCard(PaymentMethod):
     def pay(self, amount):
@@ -17,20 +19,18 @@ class BrokenPayment(PaymentMethod):
     pass 
 
 if __name__ == "__main__":
-    cc_payment = CreditCard()
-    ebank_payment = EBanking()
-    broken_payment = BrokenPayment()
+    
+    classes_to_test = [CreditCard, EBanking, BrokenPayment]
+    payment_methods_list = []
+    
+    print("Checking and processing configurations:\n")
+    
+    for i in range(len(classes_to_test)):
+        current_class = classes_to_test[i]
 
-    payment_methods_list = [cc_payment, ebank_payment, broken_payment]
-    transaction_amount = 50.00
-    
-    print("Proccessin yo money:\n")
-    
-    for i in range(len(payment_methods_list)):
-        current_method = payment_methods_list[i]
-        
-        is_successful = current_method.pay(transaction_amount)
-        
-        if is_successful == False:
+        if "pay" in current_class.__dict__ and callable(current_class.pay):
+            instance = current_class()
+            instance.pay(50.00)
+        else:
             print("Process halted at list index %d due to unconfigured class." % i)
-            brea
+            break

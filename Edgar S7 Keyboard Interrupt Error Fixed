@@ -1,0 +1,106 @@
+def show_menu():
+    """Display the program menu."""
+    print("===== File Handling Program =====")
+    print("1. Maketh and writeth thy file peasant")
+    print("2. Observe a file and read it mudblood")
+    print("3. Attach a note for 50 bucks (totally)")
+    print("4. get outta here")
+    print()
+
+
+def create_file():
+    filename = input("Enter File Name: ").strip()
+    name = input("Enter Your Name: ")
+    student_id = input("Enter Your Student ID: ")
+    year = input("Enter Your Enrollment Year: ")
+
+    file = None
+    try:
+        file = open(filename, "w")
+        file.write(f"Name: {name}\n")
+        file.write(f"Student ID: {student_id}\n")
+        file.write(f"Year: {year}\n")
+        print("\n\nFile was made yo\n\n")
+    except FileNotFoundError:
+        print("\n\nFailed: This file be invalid or the folder aint here chief.\n\n")
+    except PermissionError:
+        print("\n\nFailed: You cant make this file bronem.\n\n")
+    except OSError as error:
+        print(f"\n\nFailed: ya cant open it ({error}).\n\n")
+    finally:
+        if file is not None:
+            file.close()
+
+
+def read_file():
+    filename = input("file name pretty please: ").strip()
+
+    file = None
+    try:
+        file = open(filename, "r")
+        content = file.read()
+        print("\n")
+        print(content if content else "(its empty in dis ho)")
+        print("\n")
+    except FileNotFoundError:
+        print(f"\n\nFailed: File '{filename}' is invisible to me yo.\n\n")
+    except PermissionError:
+        print("\n\nFailed: you cannot read this 1 gurt.\n\n")
+    except OSError as error:
+        print(f"\n\nFailed: The file is not openable ({error}).\n\n")
+    finally:
+        if file is not None:
+            file.close()
+
+
+def append_file():
+    filename = input("gimme yo file name: ").strip()
+    friend = input("the name of yo buddy: ")
+    note = input("what note u tryna add today: ")
+
+    file = None
+    try:
+        # "r+" mode makes sure the file already exists (it is not created automatically).
+        file = open(filename, "r+")
+        file.seek(0, 2)  # move to the end of the file
+        file.write(f"Friend's Name: {friend}\n")
+        file.write(f"Note: {note}\n")
+        print("\n\nyo shit went well cuzz\n\n")
+    except FileNotFoundError:
+        print(f"\n\nFailed: File '{filename}' dont exist, make it w option 1.\n\n")
+    except PermissionError:
+        print("\n\nFailed: u cant modify this.\n\n")
+    except OSError as error:
+        print(f"\n\nFailed: not openable man ({error}).\n\n")
+    finally:
+        if file is not None:
+            file.close()
+
+
+def main():
+    try:
+        while True:
+            show_menu()
+            choice = input("what yo choice (1/2/3/4): ").strip()
+
+            if choice == "1":
+                create_file()
+            elif choice == "2":
+                read_file()
+            elif choice == "3":
+                append_file()
+            elif choice == "4":
+                print("cya")
+                break
+            else:
+                print("\n\n1 2 3 or 4 fn pick one\n\n")
+    except KeyboardInterrupt:
+        print("\n\nProgram interrupted. cya")
+
+
+if __name__ == "__main__":
+    main()
+  
+
+if __name__ == "__main__":
+    main()
